@@ -11,3 +11,12 @@ public class School2Application {
 	}
 
 }
+
+
+/*
+Swagger:
+http://localhost:8080/swagger-ui/index.html
+
+localhost:
+http://localhost:8080/student
+ */
