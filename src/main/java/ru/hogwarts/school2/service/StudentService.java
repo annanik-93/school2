@@ -4,6 +4,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school2.exception.StudentNotFoundException;
+import ru.hogwarts.school2.model.Faculty;
 import ru.hogwarts.school2.model.Student;
 import ru.hogwarts.school2.repository.StudentRepository;
 
@@ -57,5 +58,13 @@ public class StudentService {
             return studentRepository.findByNameIgnoreCase(name);
         }
         return studentRepository.findAll();
+    }
+
+    public Collection<Student> findByAgeBetween(int min, int max) {
+        return studentRepository.findByAgeBetween(min, max);
+    }
+
+    public Faculty getStudentFaculty(long id) {
+        return findStudent(id).getFaculty();
     }
 }

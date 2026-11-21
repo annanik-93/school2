@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school2.exception.FacultyNotFoundException;
 import ru.hogwarts.school2.model.Faculty;
+import ru.hogwarts.school2.model.Student;
 import ru.hogwarts.school2.repository.FacultyRepository;
 
 @Service
@@ -57,5 +58,13 @@ public class FacultyService {
             return facultyRepository.findByNameIgnoreCase(name);
         }
         return facultyRepository.findAll();
+    }
+
+    public Collection<Faculty> findByNameOrColor(String search) {
+        return facultyRepository.findByNameContainingIgnoreCaseOrColorContainingIgnoreCase(search, search);
+    }
+
+    public Collection<Student> getFacultyStudents(long id) {
+        return findFaculty(id).getStudents();
     }
 }
